@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fileshare-deployment
+  labels:
+    app: fileshare-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: fileshare-deployment
+  template:
+    metadata:
+      labels:
+        app: fileshare-deployment
+    spec:
+      volumes:
+      - name: azure
+        persistentVolumeClaim:
+          claimName: fileshare-pvc
+      containers:
+      - name: hello 
+        image: busybox
+        command: ['sh', '-c', 'echo "Hello, Kubernetes!" && sleep 3600']
+        volumeMounts:
+        - name: azure
+          mountPath: "/configfiles"
