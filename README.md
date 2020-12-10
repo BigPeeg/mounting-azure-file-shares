@@ -53,12 +53,12 @@ kubectl create namespace $namespace
 kubectl create secret generic azure-fileshare-secret --from-literal=azurestorageaccountname=$storageAccountName --from-literal=azurestorageaccountkey=$storageAccountKey -n $namespace
 ```
 
-Create the Persistent Volume
+Create the Persistent Volume (using [pv.yaml](pv.yaml))
 ```
 kubectl apply -f pv.yaml
 ```
 
-Create the Persistent Volume Claim
+Create the Persistent Volume Claim (using [pvc.yaml](pvc.yaml]))
 - the access mode must match that of the PV
 - selector/matchLabels, "usage" value matches that of the PV labels/usage
 
@@ -75,7 +75,7 @@ fileshare-pv                               10Gi       RWX            Retain     
 NAME            STATUS   VOLUME         CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 fileshare-pvc   Bound    fileshare-pv   10Gi       RWX                           3m54s
 ```
-Deploy the pods
+Deploy the pods (using [fileshare-deployment.yaml](fileshare-deployment.yaml))
 ```
 kubectl apply -f fileshare-deployment.yaml -n $namespace
 ```
@@ -154,3 +154,6 @@ Hello from first pod
 /configfiles # exit
 
 ```
+
+# References
+https://talkcloudlytome.com/using-azure-file-shares-to-mount-a-volume-in-kubernetes/
