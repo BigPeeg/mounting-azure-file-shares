@@ -2,8 +2,8 @@
 Step-by step example on how to setup a Kubenetes Deployment that mounts an Azure File Share
 
 ## Pre-requisites
-Az CLI
-Azure Subscription
+- Az CLI
+- Azure Subscription
 
 ## Steps
 The following commands are entered at the command line (Powershell).
