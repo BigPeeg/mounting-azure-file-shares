@@ -58,7 +58,7 @@ Create the Persistent Volume (using [pv.yaml](pv.yaml))
 kubectl apply -f pv.yaml
 ```
 
-Create the Persistent Volume Claim (using [pvc.yaml](pvc.yaml]))
+Create the Persistent Volume Claim (using [pvc.yaml](pvc.yaml))
 - the access mode must match that of the PV
 - selector/matchLabels, "usage" value matches that of the PV labels/usage
 
